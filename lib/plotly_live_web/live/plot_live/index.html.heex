@@ -12,6 +12,7 @@
 <%!-- <%= if not is_nil(@streams.plots) do %>
   <p>No plots available.</p>
 <% else %> --%>
+
 <.table
   id="plots"
   rows={@streams.plots}
@@ -49,3 +50,8 @@
     patch={~p"/plots"}
   />
 </.modal>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js">
+</script>
+
+<div id="chart" phx-update="ignore" phx-hook="Chart"></div>

@@ -45,4 +45,8 @@ defmodule PlotlyLiveWeb.PlotLive.Index do
 
     {:noreply, stream_delete(socket, :plots, plot)}
   end
+
+  def handle_event("chart_ready", _, socket) do
+    {:reply, %{data: [1, 1]}, socket}
+  end
 end

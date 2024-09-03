@@ -26,6 +26,11 @@ the owner user can modify it
 ### Design
 - [ ] have Your plots and Shared with you tabs.
 
+### DB
+-  [ ] make user id mandatory in the plot creation
+- [ ] only bring the plots from the current user.
+
+
 ## To plan or discuss or leave an implementation design
 As part of your presentation you may include how you would implement: live updates of shared plots as they are updated by the creator, collaborative editing, more advanced expressions, interactive plots.
 
