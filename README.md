@@ -29,6 +29,9 @@ the owner user can modify it
 ## To plan or discuss or leave an implementation design
 As part of your presentation you may include how you would implement: live updates of shared plots as they are updated by the creator, collaborative editing, more advanced expressions, interactive plots.
 
+## MVP
+simply bring the csv and plot from that.
+
 
 ## Learn more
   * Official website: https://www.phoenixframework.org/
