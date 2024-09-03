@@ -1,4 +1,4 @@
-defmodule PlotlyLive.Plot do
+defmodule PlotlyLive.Plots.Plot do
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -14,7 +14,7 @@ defmodule PlotlyLive.Plot do
   @doc false
   def changeset(plot, attrs) do
     plot
-    |> cast(attrs, [:name, :dataset_name, :expression])
-    |> validate_required([:name, :dataset_name, :expression])
+    |> cast(attrs, [:user_id, :name, :dataset_name, :expression])
+    |> validate_required([:user_id, :name, :dataset_name, :expression])
   end
 end

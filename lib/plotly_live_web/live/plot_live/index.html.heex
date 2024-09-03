@@ -1,0 +1,45 @@
+<.header>
+  Listing Plots
+  <:actions>
+    <.link patch={~p"/plots/new"}>
+      <.button>New Plot</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<%= if @streams.plots do %>
+  <p>No plots available.</p>
+<% else %>
+  <.table
+    id="plots"
+    rows={@streams.plots}
+    row_click={fn {_id, plot} -> JS.navigate(~p"/plots/#{plot}") end}
+  >
+    <:action :let={{_id, plot}}>
+      <div class="sr-only">
+        <.link navigate={~p"/plots/#{plot}"}>Show</.link>
+      </div>
+      <.link patch={~p"/plots/#{plot}/edit"}>Edit</.link>
+    </:action>
+    <:action :let={{id, plot}}>
+      <.link
+        phx-click={JS.push("delete", value: %{id: plot.id}) |> hide("##{id}")}
+        data-confirm="Are you sure?"
+      >
+        Delete
+      </.link>
+    </:action>
+  </.table>
+<% end %>
+
+<.modal :if={@live_action in [:new, :edit]} id="plot-modal" show on_cancel={JS.patch(~p"/plots")}>
+  <.live_component
+    module={PlotlyLiveWeb.PlotLive.FormComponent}
+    id={@plot.id || :new}
+    title={@page_title}
+    action={@live_action}
+    plot={@plot}
+    user_id={@user_id}
+    patch={~p"/plots"}
+  />
+</.modal>
