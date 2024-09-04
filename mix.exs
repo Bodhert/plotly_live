@@ -51,7 +51,9 @@ defmodule PlotlyLive.MixProject do
       {:gettext, "~> 0.20"},
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
-      {:plug_cowboy, "~> 2.5"}
+      {:plug_cowboy, "~> 2.5"},
+      {:cachex, "~> 3.6"},
+      {:httpoison, "~> 1.8"}
     ]
   end
 
