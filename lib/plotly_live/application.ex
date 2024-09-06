@@ -14,6 +14,7 @@ defmodule PlotlyLive.Application do
       {Phoenix.PubSub, name: PlotlyLive.PubSub},
       # Start the Finch HTTP client for sending emails
       {Finch, name: PlotlyLive.Finch},
+      {Cachex, name: :csv_cache},
       # Start a worker by calling: PlotlyLive.Worker.start_link(arg)
       # {PlotlyLive.Worker, arg},
       # Start to serve requests, typically the last entry

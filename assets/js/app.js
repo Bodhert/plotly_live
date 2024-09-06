@@ -26,51 +26,22 @@ let Hooks = {}
 Hooks.Chart = {
 	mounted() {
 		this.handleEvent("point_added", ({ data }) => {
+			const newTrace = {
+				type: 'histogram',
+				x: data  // New data for the histogram
+			};
+			var info = [newTrace]
 			console.log(data)
-			// Plotly.extendTraces("chart", { x: [[data.x]], y: [[data.y]] }, [0])
-			// Plotly.relayout("chart", { xaxis: { range: [data.x - 10, data.x] } })
+			Plotly.newPlot("chart", info);
+
 		})
 
-		this.pushEvent("chart_ready", {}, (reply, ref) => {
-			console.log("holi")
-			let data = [{
-				x: reply.data.map(d => d.x),
-				y: reply.data.map(d => d.y),
-				type: 'scatter',
-				mode: 'lines+markers'
-			}]
-
-			let layout = {
-				title: 'Real-time Chart',
-				xaxis: { title: 'X Axis' },
-				yaxis: { title: 'Y Axis' }
-			}
-
-			Plotly.newPlot("chart", data, layout)
-		})
-
-		console.log("afuera")
-		// Data for the plot
-		var trace1 = {
-			x: [1, 2, 3, 4, 5],
-			y: [10, 15, 13, 17, 9],
-			mode: 'markers', // scatter plot with markers
-			type: 'scatter'  // scatter plot type
+		const newTrace = {
+			type: 'histogram',
+			x: [] // New data for the histogram
 		};
-
-		var data = [trace1]; // An array of data traces
-
-		// Layout options for the plot
-		var layout = {
-			title: 'Simple Scatter Plot',
-			xaxis: {
-				title: 'X Axis'
-			},
-			yaxis: {
-				title: 'Y Axis'
-			}
-		};
-		Plotly.newPlot('chart', data, layout);
+		var info = [newTrace]
+		Plotly.newPlot("chart", info);
 	}
 }
 

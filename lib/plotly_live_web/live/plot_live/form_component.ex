@@ -9,9 +9,19 @@ defmodule PlotlyLiveWeb.PlotLive.FormComponent do
     <div>
       <.header>
         <%= @title %>
-        <:subtitle>Use this form to manage plot records in your database.</:subtitle>
+        <:subtitle>Plot</:subtitle>
       </.header>
-
+      <%!-- <script src="https://cdn.plot.ly/plotly-latest.min.js">
+      </script> --%>
+      <%= if @id != :new do %>
+        <div
+          class="max-w-full max-h-full overflow-auto bg-white"
+          id="chart"
+          phx-update="ignore"
+          phx-hook="Chart"
+        >
+        </div>
+      <% end %>
       <.simple_form
         for={@form}
         id="plot-form"
@@ -43,14 +53,14 @@ defmodule PlotlyLiveWeb.PlotLive.FormComponent do
 
   @impl true
   def handle_event("validate", %{"plot" => plot_params}, socket) do
-    dbg(socket)
     changeset = Plots.change_plot(socket.assigns.plot, plot_params)
+
+    notify_parent({:filter, plot_params})
+
     {:noreply, assign(socket, form: to_form(changeset, action: :validate))}
   end
 
   def handle_event("save", %{"plot" => plot_params}, socket) do
-    dbg(socket)
-
     save_plot(
       socket,
       socket.assigns.action,

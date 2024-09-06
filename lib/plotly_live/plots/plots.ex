@@ -21,6 +21,11 @@ defmodule PlotlyLive.Plots do
     Repo.all(Plot)
   end
 
+  def list_plots(user_id) do
+    query = from p in Plot, where: p.user_id == ^user_id
+    Repo.all(query)
+  end
+
   @doc """
   Gets a single plot.
 

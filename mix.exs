@@ -53,7 +53,8 @@ defmodule PlotlyLive.MixProject do
       {:dns_cluster, "~> 0.1.1"},
       {:plug_cowboy, "~> 2.5"},
       {:cachex, "~> 3.6"},
-      {:httpoison, "~> 1.8"}
+      {:httpoison, "~> 1.8"},
+      {:nimble_csv, "~> 1.1"}
     ]
   end
 

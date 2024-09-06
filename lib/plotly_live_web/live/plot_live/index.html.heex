@@ -18,14 +18,10 @@
   rows={@streams.plots}
   row_click={fn {_id, plot} -> JS.navigate(~p"/plots/#{plot}") end}
 >
-  <:col :let={{id, plot}} label="id"><%= plot.id %></:col>
   <:col :let={{id, plot}} label="Plot Name"><%= plot.name %></:col>
   <:col :let={{id, plot}} label="Data Set Name"><%= plot.dataset_name %></:col>
   <:col :let={{id, plot}} label="Expression"><%= plot.expression %></:col>
   <:action :let={{_id, plot}}>
-    <div class="sr-only">
-      <.link navigate={~p"/plots/#{plot}"}>Show</.link>
-    </div>
     <.link patch={~p"/plots/#{plot}/edit"}>Edit</.link>
   </:action>
   <:action :let={{id, plot}}>
@@ -36,6 +32,12 @@
       Delete
     </.link>
   </:action>
+
+  <%!-- <:action :let={{id, plot}}>
+    <.link phx-click={JS.push("plot", value: %{id: plot.id})}>
+      plot
+    </.link>
+  </:action> --%>
 </.table>
 <%!-- <% end %> --%>
 
@@ -47,11 +49,10 @@
     action={@live_action}
     plot={@plot}
     user_id={@user_id}
+    data={[]}
     patch={~p"/plots"}
   />
 </.modal>
 
 <script src="https://cdn.plot.ly/plotly-latest.min.js">
 </script>
-
-<div id="chart" phx-update="ignore" phx-hook="Chart"></div>
