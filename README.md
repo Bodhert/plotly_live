@@ -48,6 +48,6 @@ simply bring the csv and plot from that.
 
 # Run the project.
 - docker compose up -d
-- mix ecto.migrate
+- mix ecto.setup
 - iex -S mix phx.server
 - localhost:4000
