@@ -20,7 +20,7 @@ defmodule PlotlyLiveWeb.Router do
   scope "/", PlotlyLiveWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    get "/", PageController, :redirect_to_plots
   end
 
   # Other scopes may use custom stacks.

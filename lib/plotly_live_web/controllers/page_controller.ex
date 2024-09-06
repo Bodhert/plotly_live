@@ -6,4 +6,8 @@ defmodule PlotlyLiveWeb.PageController do
     # so skip the default app layout.
     render(conn, :home, layout: false)
   end
+
+  def redirect_to_plots(conn, _params) do
+    redirect(conn, to: ~p"/plots")
+  end
 end
