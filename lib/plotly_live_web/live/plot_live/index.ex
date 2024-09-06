@@ -74,10 +74,14 @@ defmodule PlotlyLiveWeb.PlotLive.Index do
     {:noreply, socket}
   end
 
-  def handle_async(:download_csv, {:ok, result}, socket) do
+  def handle_async(:download_csv, {:ok, result}, socket) when is_list(result) do
     result = List.flatten(result)
 
     {:noreply, push_event(socket, "point_added", %{data: result})}
+  end
+
+  def handle_async(:download_csv, {:ok, any}, socket) do
+    {:noreply, socket}
   end
 
   def handle_async(:download_csv, {:error, reason}, socket) do

@@ -44,3 +44,10 @@ simply bring the csv and plot from that.
   * Docs: https://hexdocs.pm/phoenix
   * Forum: https://elixirforum.com/c/phoenix-forum
   * Source: https://github.com/phoenixframework/phoenix
+
+
+# Run the project.
+- docker compose up -d
+- mix ecto.migrate
+- iex -S mix phx.server
+- localhost:4000
